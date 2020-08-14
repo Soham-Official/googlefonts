@@ -1,0 +1,152 @@
+#name{
+    font-size:150%;
+    margin-top: 3vw;
+    text-align: center;
+
+    }
+    .Bold{
+    font-weight:bold;
+    }
+    .I{
+    font-style: italic;
+    }
+    .place{
+        display: flex;
+        justify-content: center;
+    }
+    #b,#i{
+       width: 6vh;
+       height: auto;
+       margin-left: 4vw;
+       font-size: 1.7vw;
+    }
+    .fonts{
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        height: auto;
+    }
+    .display{
+        border: 2px solid black;
+        width:30%;
+        height: 50vh;
+        padding: 2vh;
+        font-size:45px;
+       
+    }
+    #font1{
+        font-family: 'Aclonica';
+    }
+    #font2{
+        font-family: 'Barrio';
+    }
+    #font3{
+        font-family: 'Beth Ellen';
+    }
+    .slider {
+        -webkit-appearance: none;
+        width: 28%;
+        height: 25px;
+        background: #d3d3d3;
+        outline: none;
+        opacity: 0.7;
+        -webkit-transition: .2s;
+        transition: opacity .2s;
+        float:right;
+        margin-right: 10%;
+      }
+      
+      .slider:hover {
+        opacity: 1;
+      }
+      
+      .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        background: #4CAF50;
+        cursor: pointer;
+      }
+      
+      .slider::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        background: #4CAF50;
+        cursor: pointer;
+      }
+    h5{
+        float: right;
+       margin-right: 20%;
+    }
+    .red{
+        width:1.5vw;
+        height: 1.5vw;
+        background-color: red;
+       margin-left: 40%;
+       border: 1px solid black;
+       cursor: pointer;
+    }
+    .yellow{
+        width:1.5vw;
+        height: 1.5vw;
+        background-color: yellow;
+       margin-left: 5%;
+       border: 1px solid black;
+       cursor: pointer;
+    }
+    .green{
+        width:1.5vw;
+        height: 1.5vw;
+        background-color: green;
+       margin-left: 5%;
+       border: 1px solid black;
+       cursor: pointer;
+    }
+    .blue{
+        width:1.5vw;
+        height: 1.5vw;
+        background-color: blue;
+       margin-left: 5%;
+       border: 1px solid black;
+       cursor: pointer;
+    }
+    .colors{
+        display: flex;
+       
+    }
+    .Red{
+        color: red;
+    }
+    .Yellow{
+        color:yellow;
+    }
+    .Green{
+        color:green;
+    }
+    .Blue{
+        color:blue;
+    }
+    .big{
+        width:2vw;
+        height: 2vw;  
+    }
+    #submit{
+        margin-left: 40%;
+    }
+    #submit1{
+        margin-left:90%;
+        float:right;
+    }
+    #submit2{
+        margin-left: 30%;
+        float:right;
+    }
+    .ftch1{
+         border: 2px solid black;
+        width:30%;
+        height: 50vh;
+        padding: 2vh;
+        margin-left:38%;
+    }
+    

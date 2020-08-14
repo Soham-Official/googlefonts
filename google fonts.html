@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="google fonts.css">
+    <link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Barrio' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Beth Ellen' rel='stylesheet'>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <script>
+        $(document).ready(function(){
+         $('#name').keyup(function() {
+               $('.display').text($(this).val());
+               
+            });
+            $('#b').click(function(){
+                $('#b').toggleClass("Bold");
+             $('.display').toggleClass("Bold");
+           
+          });
+           $('#i').click(function(){
+            $('#i').toggleClass("Bold");
+             $('.display').toggleClass("I");
+           
+          });
+          $('.slider').on('change', function () {
+            var v = $(this).val();
+            $('.display').css('font-size', v + 'px')
+            document.getElementById("font1").style.fontSize = v + "px";
+            $('span').html(v);
+        });
+        $('.red').click(function(){
+            $('.red').toggleClass("big");
+            $('.display').toggleClass("Red");
+            $('h5').toggleClass("Red");
+        });
+        $('.yellow').click(function(){
+            $('.yellow').toggleClass("big");
+            $('.display').toggleClass("Yellow");
+            $('h5').toggleClass("Yellow");
+        });
+        $('.green').click(function(){
+            $('.green').toggleClass("big");
+            $('.display').toggleClass("Green");
+            $('h5').toggleClass("Green");
+        });
+        $('.blue').click(function(){
+            $('.blue').toggleClass("big");
+            $('.display').toggleClass("Blue");
+            $('h5').toggleClass("Blue");
+        });
+       $('#submit').click(function(){
+           var fontfamily=$("#font1").css("font-family");
+           var fontweight=$("#font1").css("font-weight");
+           var fontstyle=$("#font1").css("font-style");
+           var color=$("#font1").css("color");
+           var fontsize=$("#font1").css("font-size");
+           var a=$("#font1").text()
+            var json={fontFamily: fontfamily, fontWeight:fontweight,fontStyle:fontstyle,Color:color,fontSize:fontsize};
+            json=JSON.stringify(json);
+            console.log(json)
+            //console.log(a)
+          
+              $.ajax({
+                type: 'POST',
+                url: 'submit.php',
+                data: {
+                    text: a,
+                    style: json
+                },
+                success: function (response) {
+                    console.log(response);
+                }
+            });
+          
+
+        });
+        $('#submit1').click(function(){
+            var fontfamily=$("#font2").css("font-family");
+            var fontweight=$("#font2").css("font-weight");
+            var fontstyle=$("#font2").css("font-style");
+            var color=$("#font2").css("color");
+            var fontsize=$("#font2").css("font-size");
+           
+            var a=$("#font2").text()
+            var json={fontFamily: fontfamily, fontWeight:fontweight,fontStyle:fontstyle,Color:color,fontSize:fontsize};
+            json=JSON.stringify(json);
+            $.ajax({
+                type: 'POST',
+                url: 'submit.php',
+                data: {
+                    text: a,
+                    style: json
+                },
+                success: function (response) {
+                    alert(response);
+                }
+            });
+ 
+         });
+         $('#submit2').click(function(){
+            var fontfamily=$("#font3").css("font-family");
+            var fontweight=$("#font3").css("font-weight");
+            var fontstyle=$("#font3").css("font-style");
+            var color=$("#font3").css("color");
+            var fontsize=$("#font3").css("font-size");
+            var a=$("#font3").text()
+            var json={fontFamily: fontfamily, fontWeight:fontweight,fontStyle:fontstyle,Color:color,fontSize:fontsize};
+            json=JSON.stringify(json);
+            $.ajax({
+                type: 'POST',
+                url: 'submit.php',
+                data: {
+                    text: a,
+                    style: json
+                },
+                success: function (response) {
+                    alert(response);
+                }
+            });
+ 
+ 
+         });
+         $('#fetch').click(function(){
+              var xmlreq = new XMLHttpRequest();
+              xmlreq.onreadystatechange = function () {
+              if (this.readyState == 4 && this.status == 200) {
+                 var myObj = JSON.parse(this.responseText);
+                 var myStyle = JSON.parse(myObj.style);
+                 //console.log(myObj.style.fontFamily);
+                 $("#ftch").text( myObj.text) 
+                 $("#ftch").css("font-family",myStyle.fontFamily);
+                 $("#ftch").css("font-weight",myStyle.fontWeight);    
+                 $("#ftch").css("font-style",myStyle.fontStyle);
+                 $("#ftch").css("color",myStyle.Color);
+                 $("#ftch").css("font-size",myStyle.fontSize);
+              }
+              };
+               xmlreq.open("GET", "fetch.php", true);
+                xmlreq.send()
+        
+        });
+      
+        });
+        </script>
+   </head>
+  <body>
+    <div class="place">
+        <input id="name" name="input" placeholder="Write Something">
+       
+    </div><br>
+      
+        <button id="b">B</button><button id="i">I</button>
+      
+        <input type="range" min="10" max="80" value="45" class="slider" id="myRange"><br>
+        <h5>Font Size <span>45</span>px</h5>
+      <div class="colors"> 
+           <div class="red"></div> 
+           <div class="yellow"></div> 
+           <div class="green"></div>
+            <div class="blue"></div>
+        </div>
+        <br><br><br><br>
+        <div class="fonts">
+        <p class="display" id="font1"></p> 
+        <p class="display"  id="font2"></p> 
+       
+      
+     </div>
+     <button class="btn btn-primary" id="submit" >Save</button>
+     <button class="btn btn-primary" id="submit1" >Save</button>
+    
+      <br>
+      <button class="btn btn-danger" id="fetch">Show</button>
+      <div class="ftch1" id="ftch"></div><br>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+   
+  
+  </body>
+</html>
